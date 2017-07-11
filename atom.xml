@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ShaoFOng&#39;s Blog</title>
+  <subtitle>Believe Oneself</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-11T08:40:50.913Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>余少锋</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>get跟post的区别</title>
+    <link href="http://yoursite.com/2017/03/21/get%E8%B7%9Fpost%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2017/03/21/get跟post的区别/</id>
+    <published>2017-03-20T18:14:21.000Z</published>
+    <updated>2017-07-11T08:40:50.913Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="首先我们应该简单了解一下什么是HTTP？"><a href="#首先我们应该简单了解一下什么是HTTP？" class="headerlink" title="首先我们应该简单了解一下什么是HTTP？"></a>首先我们应该简单了解一下什么是HTTP？</h2><pre><code>HTTP的全称是HyperText Transfer Protocol（超文本传输协议），超文本是一种带有链接的文本，而传
+
+输协议是一种获取一些东西从一个地方到另一个地方的规则，这些规则是为了传输页面到你的浏览器。
+
+http的工作方式：客户端（浏览器）向服务器提交HTTP请求，服务器向客户端返回响应。
+</code></pre><hr>
+<h2 id="HTTP请求的方法"><a href="#HTTP请求的方法" class="headerlink" title="HTTP请求的方法"></a>HTTP请求的方法</h2><pre><code>HTTP定义了与服务器交互的不同方法基本的有： GET、POST、PUT、DELETE。这个时候不得不提到URL这
+
+个东西，URL全称是UniformResourceLocator，中文意思是统一资源定位符（资源描述符），一个URL用
+
+于描述一个网络上的资源，HTTP中的GET、POST、PUT、DELETE这些方法就是对这个资源进行查、改、
+
+增、删，不过我们常用的主要是GET跟POST（网上看到一个原因是传统的Web MVC框架基本上都只支持GET
+
+和POST两种HTTP方法，而不支持PUT和DELETE方法。）
+
+w3school对get跟post给出了一般的理解：
+</code></pre><p>   <img src="/images/getandpost.png" alt="此处输入图片的描述"></p>
+<hr>
+<h2 id="为什么说POST比GET跟安全呢"><a href="#为什么说POST比GET跟安全呢" class="headerlink" title="为什么说POST比GET跟安全呢"></a>为什么说POST比GET跟安全呢</h2><pre><code>GET请求的数据会附在URL后面，以?分割URL跟传输的数据，参数之间以&amp;相连，比如:
+
+login.action?name=xiaoming&amp;password=abcdefg
+
+这样一来用户名，密码就会出现在URL中，别人要拿到你用户名密码只要通过浏览器的历史记录，就能轻松拿到
+
+而POST是将传输的数据放在HTTP包的包体中进行传输。
+</code></pre><hr>
+<h2 id="为什么不放弃GET而用POST呢？"><a href="#为什么不放弃GET而用POST呢？" class="headerlink" title="为什么不放弃GET而用POST呢？"></a>为什么不放弃GET而用POST呢？</h2><pre><code>既然post有这么多好处，为什么我们不放弃get，只用post算了呢?这里需要考虑效率问题，
+
+get传输数据比post快:
+</code></pre><ol>
+<li><p>POST请求包含了请求头<br>post需要在请求的body部分包含数据，所以会多了几个数据描述部分的首部字段，比如content-type</p>
+<p>，不过这对于传输速度影响不大。</p>
+</li>
+<li><p>真正影响传输速度的是post发送数据之前会先将请求头发送给服务器确认，服务器确认之后，才发送数据。</p>
+<p><strong>post请求的过程：</strong></p>
+</li>
+</ol>
+<p>　　1.浏览器请求tcp连接（第一次握手）</p>
+<p>　　2.服务器答应进行tcp连接（第二次握手）</p>
+<p>　　3.浏览器确认，并发送post请求头（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</p>
+<p>　　4.服务器返回100 continue响应</p>
+<p>　　5.浏览器开始发送数据</p>
+<p>　　6.服务器返回200 ok响应</p>
+<p>　&nbsp;&nbsp;<strong>get请求的过程：</strong></p>
+<p>　  &nbsp;1.浏览器请求tcp连接（第一次握手）</p>
+<p>　　2.服务器答应进行tcp连接（第二次握手）</p>
+<p>　　3.浏览器确认，并发送get请求头和数据（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</p>
+<p>　　4.服务器返回200 ok响应<br>　　<br>　　<br>　　<br>　　<strong>哪里有错误或者需要补充的欢迎留言^.^</strong><br>　　<br>　　参考文章：
+　　</p>
+<ul>
+<li>浅谈HTTP中Get与Post的区别   <a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="external">http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html</a></li>
+<li>W3CSCHOOL     HTTP 方法：GET 对比 POST  <a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank" rel="external">http://www.w3school.com.cn/tags/html_ref_httpmethods.asp</a></li>
+<li>迷途小哈  为什么get比post更快 <a href="http://www.cnblogs.com/strayling/p/3580048.html" target="_blank" rel="external">http://www.cnblogs.com/strayling/p/3580048.html</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;首先我们应该简单了解一下什么是HTTP？&quot;&gt;&lt;a href=&quot;#首先我们应该简单了解一下什么是HTTP？&quot; class=&quot;headerlink&quot; title=&quot;首先我们应该简单了解一下什么是HTTP？&quot;&gt;&lt;/a&gt;首先我们应该简单了解一下什么是HTTP？&lt;/h2&gt;&lt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+</feed>
