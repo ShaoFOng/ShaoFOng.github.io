@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-01T06:41:15.499Z</updated>
+  <updated>2017-08-01T06:46:07.392Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://yoursite.com/2017/04/05/%E7%9B%B8%E5%AF%B9%E5%B8%83%E5%B1%80%EF%BC%8C%E7%BB%9D%E5%AF%B9%E5%B8%83%E5%B1%80%E7%9A%84%E7%AE%80%E5%8D%95%E8%A7%A3%E8%AF%BB/"/>
     <id>http://yoursite.com/2017/04/05/相对布局，绝对布局的简单解读/</id>
     <published>2017-04-05T06:36:37.000Z</published>
-    <updated>2017-08-01T06:41:15.499Z</updated>
+    <updated>2017-08-01T06:46:07.392Z</updated>
     
     <content type="html"><![CDATA[<p>W3C是这样定义的：<br>-relative:生成相对定位的元素，相对于其正常位置进行定位。<br>因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。</p>
 <p>-absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
 <p>个人认为比较重要的是absolute会脱离文档流，而relative不会脱离文档流,怎么理解呢？<br>首先：<br>什么是文档流？</p>
-<pre><code>将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流。
+<pre><code>将窗体自上而下分成一行行，并在每行中按从左至右的顺序排放元素，即为文档流。
 </code></pre><p>举个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   //初始</div><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;width:200px;height:100px;border:1px solid red;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"first"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"second"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>初始图：<br><img src="/images/init.png" alt="此处输入图片的描述"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   //修改position为relative并设top、left为20px</div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:relative;width:200px;height:100px;border:1px solid red;top:20px;left:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>效果图：<br><img src="/images/relative.png" alt="此处输入图片的描述"><br>设置relative+margin后：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:relative;width:200px;height:100px;border:1px solid red;top:20px;left:20px;margin:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
