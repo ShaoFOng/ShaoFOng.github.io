@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术," />
+  <meta name="keywords" content="css," />
 
 
 
@@ -113,19 +113,21 @@
 
 
 
-<meta name="description" content="首先我们应该简单了解一下什么是HTTP？HTTP的全称是HyperText Transfer Protocol（超文本传输协议），超文本是一种带有链接的文本，而传  输协议是一种获取一些东西从一个地方到另一个地方的规则，这些规则是为了传输页面到你的浏览器。  http的工作方式：客户端（浏览器）向服务器提交HTTP请求，服务器向客户端返回响应。  HTTP请求的方法HTTP定义了与服务器交互的不同">
-<meta name="keywords" content="技术">
+<meta name="description" content="W3C是这样定义的：-relative:生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。 -absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。 个人认为比较重要的是absolute会脱离文档">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="get跟post的区别">
-<meta property="og:url" content="http://yoursite.com/2017/03/21/get跟post的区别/index.html">
+<meta property="og:title" content="ShaoFOng&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/2017/04/05/相对布局，绝对布局的简单解读/index.html">
 <meta property="og:site_name" content="ShaoFOng&#39;s Blog">
-<meta property="og:description" content="首先我们应该简单了解一下什么是HTTP？HTTP的全称是HyperText Transfer Protocol（超文本传输协议），超文本是一种带有链接的文本，而传  输协议是一种获取一些东西从一个地方到另一个地方的规则，这些规则是为了传输页面到你的浏览器。  http的工作方式：客户端（浏览器）向服务器提交HTTP请求，服务器向客户端返回响应。  HTTP请求的方法HTTP定义了与服务器交互的不同">
-<meta property="og:image" content="http://yoursite.com/images/getandpost.png">
-<meta property="og:updated_time" content="2017-07-11T08:40:50.913Z">
+<meta property="og:description" content="W3C是这样定义的：-relative:生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。 -absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。 个人认为比较重要的是absolute会脱离文档">
+<meta property="og:image" content="http://yoursite.com/images/init.png">
+<meta property="og:image" content="http://yoursite.com/images/relative.png">
+<meta property="og:image" content="http://yoursite.com/images/absolute.png">
+<meta property="og:updated_time" content="2017-08-01T06:37:41.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="get跟post的区别">
-<meta name="twitter:description" content="首先我们应该简单了解一下什么是HTTP？HTTP的全称是HyperText Transfer Protocol（超文本传输协议），超文本是一种带有链接的文本，而传  输协议是一种获取一些东西从一个地方到另一个地方的规则，这些规则是为了传输页面到你的浏览器。  http的工作方式：客户端（浏览器）向服务器提交HTTP请求，服务器向客户端返回响应。  HTTP请求的方法HTTP定义了与服务器交互的不同">
-<meta name="twitter:image" content="http://yoursite.com/images/getandpost.png">
+<meta name="twitter:title" content="ShaoFOng&#39;s Blog">
+<meta name="twitter:description" content="W3C是这样定义的：-relative:生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。 -absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。 个人认为比较重要的是absolute会脱离文档">
+<meta name="twitter:image" content="http://yoursite.com/images/init.png">
 
 
 
@@ -153,13 +155,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/21/get跟post的区别/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/05/相对布局，绝对布局的简单解读/"/>
 
 
 
 
 
-  <title>get跟post的区别 | ShaoFOng's Blog</title>
+  <title> | ShaoFOng's Blog</title>
   
 
 
@@ -288,7 +290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/21/get跟post的区别/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/相对布局，绝对布局的简单解读/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="余少锋">
@@ -305,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">get跟post的区别</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -317,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T02:14:21+08:00">
-                2017-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T14:36:37+08:00">
+                2017-04-05
               </time>
             
 
@@ -340,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
                   </a>
                 </span>
 
@@ -374,61 +376,17 @@
       
 
       
-        <h2 id="首先我们应该简单了解一下什么是HTTP？"><a href="#首先我们应该简单了解一下什么是HTTP？" class="headerlink" title="首先我们应该简单了解一下什么是HTTP？"></a>首先我们应该简单了解一下什么是HTTP？</h2><pre><code>HTTP的全称是HyperText Transfer Protocol（超文本传输协议），超文本是一种带有链接的文本，而传
-
-输协议是一种获取一些东西从一个地方到另一个地方的规则，这些规则是为了传输页面到你的浏览器。
-
-http的工作方式：客户端（浏览器）向服务器提交HTTP请求，服务器向客户端返回响应。
-</code></pre><hr>
-<h2 id="HTTP请求的方法"><a href="#HTTP请求的方法" class="headerlink" title="HTTP请求的方法"></a>HTTP请求的方法</h2><pre><code>HTTP定义了与服务器交互的不同方法基本的有： GET、POST、PUT、DELETE。这个时候不得不提到URL这
-
-个东西，URL全称是UniformResourceLocator，中文意思是统一资源定位符（资源描述符），一个URL用
-
-于描述一个网络上的资源，HTTP中的GET、POST、PUT、DELETE这些方法就是对这个资源进行查、改、
-
-增、删，不过我们常用的主要是GET跟POST（网上看到一个原因是传统的Web MVC框架基本上都只支持GET
-
-和POST两种HTTP方法，而不支持PUT和DELETE方法。）
-
-w3school对get跟post给出了一般的理解：
-</code></pre><p>   <img src="/images/getandpost.png" alt="此处输入图片的描述"></p>
-<hr>
-<h2 id="为什么说POST比GET跟安全呢"><a href="#为什么说POST比GET跟安全呢" class="headerlink" title="为什么说POST比GET跟安全呢"></a>为什么说POST比GET跟安全呢</h2><pre><code>GET请求的数据会附在URL后面，以?分割URL跟传输的数据，参数之间以&amp;相连，比如:
-
-login.action?name=xiaoming&amp;password=abcdefg
-
-这样一来用户名，密码就会出现在URL中，别人要拿到你用户名密码只要通过浏览器的历史记录，就能轻松拿到
-
-而POST是将传输的数据放在HTTP包的包体中进行传输。
-</code></pre><hr>
-<h2 id="为什么不放弃GET而用POST呢？"><a href="#为什么不放弃GET而用POST呢？" class="headerlink" title="为什么不放弃GET而用POST呢？"></a>为什么不放弃GET而用POST呢？</h2><pre><code>既然post有这么多好处，为什么我们不放弃get，只用post算了呢?这里需要考虑效率问题，
-
-get传输数据比post快:
-</code></pre><ol>
-<li><p>POST请求包含了请求头<br>post需要在请求的body部分包含数据，所以会多了几个数据描述部分的首部字段，比如content-type</p>
-<p>，不过这对于传输速度影响不大。</p>
-</li>
-<li><p>真正影响传输速度的是post发送数据之前会先将请求头发送给服务器确认，服务器确认之后，才发送数据。</p>
-<p><strong>post请求的过程：</strong></p>
-</li>
-</ol>
-<p>　　1.浏览器请求tcp连接（第一次握手）</p>
-<p>　　2.服务器答应进行tcp连接（第二次握手）</p>
-<p>　　3.浏览器确认，并发送post请求头（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</p>
-<p>　　4.服务器返回100 continue响应</p>
-<p>　　5.浏览器开始发送数据</p>
-<p>　　6.服务器返回200 ok响应</p>
-<p>　&nbsp;&nbsp;<strong>get请求的过程：</strong></p>
-<p>　  &nbsp;1.浏览器请求tcp连接（第一次握手）</p>
-<p>　　2.服务器答应进行tcp连接（第二次握手）</p>
-<p>　　3.浏览器确认，并发送get请求头和数据（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</p>
-<p>　　4.服务器返回200 ok响应<br>　　<br>　　<br>　　<br>　　<strong>哪里有错误或者需要补充的欢迎留言^.^</strong><br>　　<br>　　参考文章：
-　　</p>
-<ul>
-<li>浅谈HTTP中Get与Post的区别   <a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="external">http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html</a></li>
-<li>W3CSCHOOL     HTTP 方法：GET 对比 POST  <a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank" rel="external">http://www.w3school.com.cn/tags/html_ref_httpmethods.asp</a></li>
-<li>迷途小哈  为什么get比post更快 <a href="http://www.cnblogs.com/strayling/p/3580048.html" target="_blank" rel="external">http://www.cnblogs.com/strayling/p/3580048.html</a></li>
-</ul>
+        <p>W3C是这样定义的：<br>-relative:生成相对定位的元素，相对于其正常位置进行定位。<br>因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。</p>
+<p>-absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
+<p>个人认为比较重要的是absolute会脱离文档流，而relative不会脱离文档流,怎么理解呢？<br>首先：<br>什么是文档流？</p>
+<pre><code>将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流。
+</code></pre><p>举个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   //初始</div><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;width:200px;height:100px;border:1px solid red;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"first"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"second"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>初始图：<br><img src="/images/init.png" alt="此处输入图片的描述"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   //修改position为relative并设top、left为20px</div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:relative;width:200px;height:100px;border:1px solid red;top:20px;left:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>效果图：<br><img src="/images/relative.png" alt="此处输入图片的描述"><br>设置relative+margin后：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:relative;width:200px;height:100px;border:1px solid red;top:20px;left:20px;margin:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>效果图：<br><img src="/images/absolute.png" alt="此处输入图片的描述"></p>
+<p>修改position为absolute的话<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:absolute;width:200px;height:100px;border:1px solid red;top:20px;left:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>效果图：<br>![此处输入图片的描述][4]</p>
+<p>参考文章：<a href="http://blog.csdn.net/chen_zw/article/details/8741365" target="_blank" rel="external">http://blog.csdn.net/chen_zw/article/details/8741365</a></p>
 
       
     </div>
@@ -458,7 +416,7 @@ get传输数据比post快:
       
         <div class="post-tags">
           
-            <a href="/tags/技术/" rel="tag"># 技术</a>
+            <a href="/tags/css/" rel="tag"># css</a>
           
         </div>
       
@@ -471,15 +429,15 @@ get传输数据比post快:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/21/get跟post的区别/" rel="next" title="get跟post的区别">
+                <i class="fa fa-chevron-left"></i> get跟post的区别
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/相对布局，绝对布局的简单解读/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,17 +484,8 @@ get传输数据比post快:
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/luo.jpg"
@@ -616,22 +565,6 @@ get传输数据比post快:
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先我们应该简单了解一下什么是HTTP？"><span class="nav-number">1.</span> <span class="nav-text">首先我们应该简单了解一下什么是HTTP？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP请求的方法"><span class="nav-number">2.</span> <span class="nav-text">HTTP请求的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么说POST比GET跟安全呢"><span class="nav-number">3.</span> <span class="nav-text">为什么说POST比GET跟安全呢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么不放弃GET而用POST呢？"><span class="nav-number">4.</span> <span class="nav-text">为什么不放弃GET而用POST呢？</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
