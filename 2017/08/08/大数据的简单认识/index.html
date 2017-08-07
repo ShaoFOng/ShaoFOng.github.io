@@ -1,28 +1,378 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ShaoFOng&#39;s Blog</title>
-  <subtitle>Believe Oneself</subtitle>
-  <link href="/atom.xml" rel="self"/>
+<!doctype html>
+
+
+
   
-  <link href="http://yoursite.com/"/>
-  <updated>2017-08-07T17:03:07.617Z</updated>
-  <id>http://yoursite.com/</id>
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <author>
-    <name>余少锋</name>
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>大数据的简单认识</title>
-    <link href="http://yoursite.com/2017/08/08/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E8%AF%86/"/>
-    <id>http://yoursite.com/2017/08/08/大数据的简单认识/</id>
-    <published>2017-08-07T16:43:22.000Z</published>
-    <updated>2017-08-07T17:03:07.617Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><p>　　“大数据”是一个体量特别大，数据类别特别大的数据集，并且这样的数据集无法用传统数据库工具对其内容进行抓取、管理和处理。 “大数据”首先是指数据体量(volumes)?大，指代大型数据集，一般在10TB?规模左右，但在实际应用中，很多企业用户把多个数据集放在一起，已经形成了PB级的数据量；其次是指数据类别(variety)大，数据来自多种数据源，数据种类和格式日渐丰富，已冲破了以前所限定的结构化数据范畴，囊括了半结构化和非结构化数据。接着是数据处理速度（Velocity）快，在数据量非常庞大的情况下，也能够做到数据的实时处理。最后一个特点是指数据真实性（Veracity）高，随着社交数据、企业内容、交易与应用数据等新数据源的兴趣，传统数据源的局限被打破，企业愈发需要有效的信息之力以确保其真实性及安全性。　　“大数据”是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。从数据的类别上看，”大数据”指的是无法使用传统流程或工具处理或分析的信息。它定义了那些超出正常处理范围和大小、迫使用户采用非传统处理方法的数据集。<br>　　亚马逊网络服务（AWS）、大数据科学家JohnRauser提到一个简单的定义：大数据就是任何超过了一台计算机处理能力的庞大数据量。<br>　　研发小组对大数据的定义：”大数据是最大的宣传技术、是最时髦的技术，当这种现象出现时，定义就变得很混乱。” Kelly说：”大数据是可能不包含所有的信息，但我觉得大部分是正确的。对大数据的一部分认知在于，它是如此之大，分析它需要多个工作负载，这是AWS的定义。当你的技术达到极限时，也就是数据的极限”。 大数据不是关于如何定义，最重要的是如何使用。最大的挑战在于哪些技术能更好的使用数据以及大数据的应用情况如何。这与传统的数据库相比，开源的大数据分析工具的如Hadoop的崛起，这些非结构化的数据服务的价值在哪里。</p>
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="大数据," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ShaoFOng's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="一、什么是大数据　　“大数据”是一个体量特别大，数据类别特别大的数据集，并且这样的数据集无法用传统数据库工具对其内容进行抓取、管理和处理。 “大数据”首先是指数据体量(volumes)?大，指代大型数据集，一般在10TB?规模左右，但在实际应用中，很多企业用户把多个数据集放在一起，已经形成了PB级的数据量；其次是指数据类别(variety)大，数据来自多种数据源，数据种类和格式日渐丰富，已冲破了以">
+<meta name="keywords" content="大数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大数据的简单认识">
+<meta property="og:url" content="http://yoursite.com/2017/08/08/大数据的简单认识/index.html">
+<meta property="og:site_name" content="ShaoFOng&#39;s Blog">
+<meta property="og:description" content="一、什么是大数据　　“大数据”是一个体量特别大，数据类别特别大的数据集，并且这样的数据集无法用传统数据库工具对其内容进行抓取、管理和处理。 “大数据”首先是指数据体量(volumes)?大，指代大型数据集，一般在10TB?规模左右，但在实际应用中，很多企业用户把多个数据集放在一起，已经形成了PB级的数据量；其次是指数据类别(variety)大，数据来自多种数据源，数据种类和格式日渐丰富，已冲破了以">
+<meta property="og:updated_time" content="2017-08-07T17:03:07.617Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大数据的简单认识">
+<meta name="twitter:description" content="一、什么是大数据　　“大数据”是一个体量特别大，数据类别特别大的数据集，并且这样的数据集无法用传统数据库工具对其内容进行抓取、管理和处理。 “大数据”首先是指数据体量(volumes)?大，指代大型数据集，一般在10TB?规模左右，但在实际应用中，很多企业用户把多个数据集放在一起，已经形成了PB级的数据量；其次是指数据类别(variety)大，数据来自多种数据源，数据种类和格式日渐丰富，已冲破了以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/08/大数据的简单认识/"/>
+
+
+
+
+
+  <title>大数据的简单认识 | ShaoFOng's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ShaoFOng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Believe Oneself</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/08/大数据的简单认识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="余少锋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/luo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaoFOng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">大数据的简单认识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T00:43:22+08:00">
+                2017-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、什么是大数据"><a href="#一、什么是大数据" class="headerlink" title="一、什么是大数据"></a>一、什么是大数据</h2><p>　　“大数据”是一个体量特别大，数据类别特别大的数据集，并且这样的数据集无法用传统数据库工具对其内容进行抓取、管理和处理。 “大数据”首先是指数据体量(volumes)?大，指代大型数据集，一般在10TB?规模左右，但在实际应用中，很多企业用户把多个数据集放在一起，已经形成了PB级的数据量；其次是指数据类别(variety)大，数据来自多种数据源，数据种类和格式日渐丰富，已冲破了以前所限定的结构化数据范畴，囊括了半结构化和非结构化数据。接着是数据处理速度（Velocity）快，在数据量非常庞大的情况下，也能够做到数据的实时处理。最后一个特点是指数据真实性（Veracity）高，随着社交数据、企业内容、交易与应用数据等新数据源的兴趣，传统数据源的局限被打破，企业愈发需要有效的信息之力以确保其真实性及安全性。　　“大数据”是需要新处理模式才能具有更强的决策力、洞察发现力和流程优化能力的海量、高增长率和多样化的信息资产。从数据的类别上看，”大数据”指的是无法使用传统流程或工具处理或分析的信息。它定义了那些超出正常处理范围和大小、迫使用户采用非传统处理方法的数据集。<br>　　亚马逊网络服务（AWS）、大数据科学家JohnRauser提到一个简单的定义：大数据就是任何超过了一台计算机处理能力的庞大数据量。<br>　　研发小组对大数据的定义：”大数据是最大的宣传技术、是最时髦的技术，当这种现象出现时，定义就变得很混乱。” Kelly说：”大数据是可能不包含所有的信息，但我觉得大部分是正确的。对大数据的一部分认知在于，它是如此之大，分析它需要多个工作负载，这是AWS的定义。当你的技术达到极限时，也就是数据的极限”。 大数据不是关于如何定义，最重要的是如何使用。最大的挑战在于哪些技术能更好的使用数据以及大数据的应用情况如何。这与传统的数据库相比，开源的大数据分析工具的如Hadoop的崛起，这些非结构化的数据服务的价值在哪里。</p>
 <h2 id="二、数据-结构-非结构"><a href="#二、数据-结构-非结构" class="headerlink" title="二、数据 结构+非结构"></a>二、数据 结构+非结构</h2><p>　　在信息社会，信息可以划分为两大类。一类信息能够用数据或统一的结构加以表示，我们称之为结构化数据，如数字、符号；而另一类信息无法用数字或统一的结构表示，如文本、图像、声音、网页等，我们称之为非结构化数据。结构化数据属于非结构化数据，是非结构化数据的特例。 </p>
 <p>定义：</p>
 <p>　　结构化数据：即行数据,存储在数据库里,可以用二维表结构来逻辑表达实现的数据。</p>
@@ -120,130 +470,383 @@
 <p>Sqoop是SQL-to-Hadoop的缩写，主要用于传统数据库和Hadoop之前传输数据。数据的导入和导出本质上是Mapreduce程序，充分利用了MR的并行化和容错性。</p>
 <p>Sqoop利用数据库技术描述数据架构，用于在关系数据库、数据仓库和Hadoop之间转移数据。</p>
 <p>参考博客：<br>1、<a href="http://www.cnblogs.com/raphael5200/p/5293960.html" target="_blank" rel="external">http://www.cnblogs.com/raphael5200/p/5293960.html</a><br>2、<a href="http://blog.jobbole.com/95588/" target="_blank" rel="external">http://blog.jobbole.com/95588/</a><br>3、<a href="http://book.51cto.com/art/201408/449311.htm" target="_blank" rel="external">http://book.51cto.com/art/201408/449311.htm</a><br>4、<a href="http://blog.csdn.net/sky1203850702/article/details/47977071" target="_blank" rel="external">http://blog.csdn.net/sky1203850702/article/details/47977071</a><br>5、<a href="http://blog.csdn.net/kingmax54212008/article/details/46237417" target="_blank" rel="external">http://blog.csdn.net/kingmax54212008/article/details/46237417</a><br>6、<a href="http://blog.csdn.net/utnewbear/article/details/8267653" target="_blank" rel="external">http://blog.csdn.net/utnewbear/article/details/8267653</a><br>7、<a href="https://www.zhihu.com/question/23896161" target="_blank" rel="external">https://www.zhihu.com/question/23896161</a><br>8、<a href="http://www.360doc.com/content/16/0407/11/15491230_548541129.shtml" target="_blank" rel="external">http://www.360doc.com/content/16/0407/11/15491230_548541129.shtml</a><br>9、<a href="http://www.cnblogs.com/gridmix/p/5102694.html" target="_blank" rel="external">http://www.cnblogs.com/gridmix/p/5102694.html</a></p>
-]]></content>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/05/相对布局，绝对布局的简单解读/" rel="next" title="相对布局，绝对布局的简单解读（position:relative与position:absolute）">
+                <i class="fa fa-chevron-left"></i> 相对布局，绝对布局的简单解读（position:relative与position:absolute）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-    <summary type="html">
-    
-      &lt;h2 id=&quot;一、什么是大数据&quot;&gt;&lt;a href=&quot;#一、什么是大数据&quot; class=&quot;headerlink&quot; title=&quot;一、什么是大数据&quot;&gt;&lt;/a&gt;一、什么是大数据&lt;/h2&gt;&lt;p&gt;　　“大数据”是一个体量特别大，数据类别特别大的数据集，并且这样的数据集无法用传统数据库工具
-    
-    </summary>
-    
-      <category term="大数据" scheme="http://yoursite.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    
-      <category term="大数据" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-  </entry>
+  </div>
+
+
+        </div>
+        
+          
   
-  <entry>
-    <title>相对布局，绝对布局的简单解读（position:relative与position:absolute）</title>
-    <link href="http://yoursite.com/2017/04/05/%E7%9B%B8%E5%AF%B9%E5%B8%83%E5%B1%80%EF%BC%8C%E7%BB%9D%E5%AF%B9%E5%B8%83%E5%B1%80%E7%9A%84%E7%AE%80%E5%8D%95%E8%A7%A3%E8%AF%BB/"/>
-    <id>http://yoursite.com/2017/04/05/相对布局，绝对布局的简单解读/</id>
-    <published>2017-04-05T06:36:37.000Z</published>
-    <updated>2017-08-01T06:46:07.392Z</updated>
-    
-    <content type="html"><![CDATA[<p>W3C是这样定义的：<br>-relative:生成相对定位的元素，相对于其正常位置进行定位。<br>因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。</p>
-<p>-absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。<br>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
-<p>个人认为比较重要的是absolute会脱离文档流，而relative不会脱离文档流,怎么理解呢？<br>首先：<br>什么是文档流？</p>
-<pre><code>将窗体自上而下分成一行行，并在每行中按从左至右的顺序排放元素，即为文档流。
-</code></pre><p>举个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   //初始</div><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;width:200px;height:100px;border:1px solid red;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"first"</span>&gt;</span>first<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"second"</span>&gt;</span>second<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>初始图：<br><img src="/images/init.png" alt="此处输入图片的描述"><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   //修改position为relative并设top、left为20px</div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:relative;width:200px;height:100px;border:1px solid red;top:20px;left:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>效果图：<br><img src="/images/relative.png" alt="此处输入图片的描述"><br>设置relative+margin后：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:relative;width:200px;height:100px;border:1px solid red;top:20px;left:20px;margin:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>效果图：<br><img src="/images/absolute.png" alt="此处输入图片的描述"></p>
-<p>修改position为absolute的话<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">	#first&#123;position:absolute;width:200px;height:100px;border:1px solid red;top:20px;left:20px;&#125;</div><div class="line">	#second&#123;width:200px;height:100px;border:1px solid blue;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>效果图：<br>![此处输入图片的描述][4]</p>
-<p>参考文章：<a href="http://blog.csdn.net/chen_zw/article/details/8741365" target="_blank" rel="external">http://blog.csdn.net/chen_zw/article/details/8741365</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;W3C是这样定义的：&lt;br&gt;-relative:生成相对定位的元素，相对于其正常位置进行定位。&lt;br&gt;因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。&lt;/p&gt;
-&lt;p&gt;-absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素进
-    
-    </summary>
-    
-      <category term="css" scheme="http://yoursite.com/categories/css/"/>
-    
-    
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
-    
-  </entry>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/luo.jpg"
+               alt="余少锋" />
+          <p class="site-author-name" itemprop="name">余少锋</p>
+           
+              <p class="site-description motion-element" itemprop="description">坚持自己</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ShaoFOng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是大数据"><span class="nav-number">1.</span> <span class="nav-text">一、什么是大数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、数据-结构-非结构"><span class="nav-number">2.</span> <span class="nav-text">二、数据 结构+非结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、数据单位"><span class="nav-number">3.</span> <span class="nav-text">三、数据单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、-工作流程-采集-预处理ETL-分析-显示"><span class="nav-number">4.</span> <span class="nav-text">四、 工作流程 采集-预处理ETL-分析-显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是数据预处理？"><span class="nav-number">5.</span> <span class="nav-text">什么是数据预处理？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、计算模式"><span class="nav-number">6.</span> <span class="nav-text">五、计算模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、分布式系统"><span class="nav-number">7.</span> <span class="nav-text">六、分布式系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、CDH"><span class="nav-number">8.</span> <span class="nav-text">七、CDH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、CAP原理"><span class="nav-number">9.</span> <span class="nav-text">八、CAP原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、Hadoop技术栈"><span class="nav-number">10.</span> <span class="nav-text">九、Hadoop技术栈</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  <entry>
-    <title>get跟post的区别</title>
-    <link href="http://yoursite.com/2017/03/21/get%E8%B7%9Fpost%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>http://yoursite.com/2017/03/21/get跟post的区别/</id>
-    <published>2017-03-20T18:14:21.000Z</published>
-    <updated>2017-07-11T08:40:50.913Z</updated>
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">余少锋</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
     
-    <content type="html"><![CDATA[<h2 id="首先我们应该简单了解一下什么是HTTP？"><a href="#首先我们应该简单了解一下什么是HTTP？" class="headerlink" title="首先我们应该简单了解一下什么是HTTP？"></a>首先我们应该简单了解一下什么是HTTP？</h2><pre><code>HTTP的全称是HyperText Transfer Protocol（超文本传输协议），超文本是一种带有链接的文本，而传
-
-输协议是一种获取一些东西从一个地方到另一个地方的规则，这些规则是为了传输页面到你的浏览器。
-
-http的工作方式：客户端（浏览器）向服务器提交HTTP请求，服务器向客户端返回响应。
-</code></pre><hr>
-<h2 id="HTTP请求的方法"><a href="#HTTP请求的方法" class="headerlink" title="HTTP请求的方法"></a>HTTP请求的方法</h2><pre><code>HTTP定义了与服务器交互的不同方法基本的有： GET、POST、PUT、DELETE。这个时候不得不提到URL这
-
-个东西，URL全称是UniformResourceLocator，中文意思是统一资源定位符（资源描述符），一个URL用
-
-于描述一个网络上的资源，HTTP中的GET、POST、PUT、DELETE这些方法就是对这个资源进行查、改、
-
-增、删，不过我们常用的主要是GET跟POST（网上看到一个原因是传统的Web MVC框架基本上都只支持GET
-
-和POST两种HTTP方法，而不支持PUT和DELETE方法。）
-
-w3school对get跟post给出了一般的理解：
-</code></pre><p>   <img src="/images/getandpost.png" alt="此处输入图片的描述"></p>
-<hr>
-<h2 id="为什么说POST比GET跟安全呢"><a href="#为什么说POST比GET跟安全呢" class="headerlink" title="为什么说POST比GET跟安全呢"></a>为什么说POST比GET跟安全呢</h2><pre><code>GET请求的数据会附在URL后面，以?分割URL跟传输的数据，参数之间以&amp;相连，比如:
-
-login.action?name=xiaoming&amp;password=abcdefg
-
-这样一来用户名，密码就会出现在URL中，别人要拿到你用户名密码只要通过浏览器的历史记录，就能轻松拿到
-
-而POST是将传输的数据放在HTTP包的包体中进行传输。
-</code></pre><hr>
-<h2 id="为什么不放弃GET而用POST呢？"><a href="#为什么不放弃GET而用POST呢？" class="headerlink" title="为什么不放弃GET而用POST呢？"></a>为什么不放弃GET而用POST呢？</h2><pre><code>既然post有这么多好处，为什么我们不放弃get，只用post算了呢?这里需要考虑效率问题，
-
-get传输数据比post快:
-</code></pre><ol>
-<li><p>POST请求包含了请求头<br>post需要在请求的body部分包含数据，所以会多了几个数据描述部分的首部字段，比如content-type</p>
-<p>，不过这对于传输速度影响不大。</p>
-</li>
-<li><p>真正影响传输速度的是post发送数据之前会先将请求头发送给服务器确认，服务器确认之后，才发送数据。</p>
-<p><strong>post请求的过程：</strong></p>
-</li>
-</ol>
-<p>　　1.浏览器请求tcp连接（第一次握手）</p>
-<p>　　2.服务器答应进行tcp连接（第二次握手）</p>
-<p>　　3.浏览器确认，并发送post请求头（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</p>
-<p>　　4.服务器返回100 continue响应</p>
-<p>　　5.浏览器开始发送数据</p>
-<p>　　6.服务器返回200 ok响应</p>
-<p>　&nbsp;&nbsp;<strong>get请求的过程：</strong></p>
-<p>　  &nbsp;1.浏览器请求tcp连接（第一次握手）</p>
-<p>　　2.服务器答应进行tcp连接（第二次握手）</p>
-<p>　　3.浏览器确认，并发送get请求头和数据（第三次握手，这个报文比较小，所以http会在此时进行第一次数据发送）</p>
-<p>　　4.服务器返回200 ok响应<br>　　<br>　　<br>　　<br>　　<strong>哪里有错误或者需要补充的欢迎留言^.^</strong><br>　　<br>　　参考文章：
-　　</p>
-<ul>
-<li>浅谈HTTP中Get与Post的区别   <a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="external">http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html</a></li>
-<li>W3CSCHOOL     HTTP 方法：GET 对比 POST  <a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" target="_blank" rel="external">http://www.w3school.com.cn/tags/html_ref_httpmethods.asp</a></li>
-<li>迷途小哈  为什么get比post更快 <a href="http://www.cnblogs.com/strayling/p/3580048.html" target="_blank" rel="external">http://www.cnblogs.com/strayling/p/3580048.html</a></li>
-</ul>
-]]></content>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
-    <summary type="html">
-    
-      &lt;h2 id=&quot;首先我们应该简单了解一下什么是HTTP？&quot;&gt;&lt;a href=&quot;#首先我们应该简单了解一下什么是HTTP？&quot; class=&quot;headerlink&quot; title=&quot;首先我们应该简单了解一下什么是HTTP？&quot;&gt;&lt;/a&gt;首先我们应该简单了解一下什么是HTTP？&lt;/h2&gt;&lt;
-    
-    </summary>
-    
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="技术" scheme="http://yoursite.com/tags/%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
+
+  </div>
+
   
-</feed>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
