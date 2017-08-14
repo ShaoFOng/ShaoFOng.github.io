@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-10T16:03:55.224Z</updated>
+  <updated>2017-08-14T16:15:26.635Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>对MapReduce的认识</title>
+    <link href="http://yoursite.com/2017/08/14/%E5%AF%B9MapReduce%E7%9A%84%E8%AE%A4%E8%AF%86/"/>
+    <id>http://yoursite.com/2017/08/14/对MapReduce的认识/</id>
+    <published>2017-08-14T03:34:12.000Z</published>
+    <updated>2017-08-14T16:15:26.635Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简介mr架构，4个对象"><a href="#简介mr架构，4个对象" class="headerlink" title="简介mr架构，4个对象"></a>简介mr架构，4个对象</h2><p>MapReduce的思想是“分而治之”。<br>1）Mapper负责“分”<br>把复杂的任务分解为若干个“简单的任务”来处理。“简单的任务”包含三层含义：<br>数据或计算的规模相对原任务要大大缩小<br>就近计算原则，任务会分配到存放着所需数据的节点上进行计算<br>这些小任务可以并行计算彼此间几乎没有依赖关系</p>
+<p>2）Reducer负责对map阶段的结果进行汇总。<br>至于需要多少个Reducer，可以根据具体问题，<br>通过在mapred-site.xml配置文件里设置参数mapred.reduce.tasks的值，缺省值为1。</p>
+<p><img src="/images/MapReduce工作机制.png" alt="此处输入图片的描述"></p>
+<h1 id="Mapreduce作业的4个对象"><a href="#Mapreduce作业的4个对象" class="headerlink" title="Mapreduce作业的4个对象"></a>Mapreduce作业的4个对象</h1><p>1、<br>客户端（client）：编写mapreduce程序，配置作业，提交作业，这就是程序员完成的工作；</p>
+<p>JobTracker：初始化作业，分配作业，与TaskTracker通信，协调整个作业的执行；</p>
+<p>TaskTracker：保持与JobTracker的通信，在分配的数据片段上执行Map或Reduce任务，TaskTracker和JobTracker的不同有个很重要的方面，就是在执行任务时候TaskTracker可以有n多个，JobTracker则只会有一个（JobTracker只能有一个就和hdfs里namenode一样存在单点故障，我会在后面的mapreduce的相关问题里讲到这个问题的）<br>2、JobTracker：初始化作业，分配作业，与TaskTracker通信，协调整个作业的执行；<br>3、TaskTracker：保持与JobTracker的通信，在分配的数据片段上执行Map或Reduce任务，TaskTracker和JobTracker的不同有个很重要的方面，就是在执行任务时候TaskTracker可以有n多个，JobTracker则只会有一个（JobTracker只能有一个就和hdfs里namenode一样存在单点故障，我会在后面的mapreduce的相关问题里讲到这个问题的）<br>4、Hdfs：保存作业的数据、配置信息等等，最后的结果也是保存在hdfs上面</p>
+<h2 id="mr工作流程"><a href="#mr工作流程" class="headerlink" title="mr工作流程"></a>mr工作流程</h2><p><img src="/images/MapReduce工作流程.png" alt="此处输入图片的描述"></p>
+<p>按照时间顺序包括：<br>输入分片（input split）、<br>map阶段、<br>combiner阶段、<br>shuffle阶段和<br>reduce阶段。</p>
+<p><strong>输入分片（input split）：</strong><br>在进行map计算之前，mapreduce会根据输入文件计算输入分片（input split），每个输入分片（input split）针对一个map任务<br>输入分片（input split）存储的并非数据本身，而是一个分片长度和一个记录数据的位置的数组，输入分片（input split）往往和hdfs的block（块）关系很密切</p>
+<pre><code>假如我们设定hdfs的块的大小是64mb，如果我们输入有三个文件，大小分别是3mb、65mb和127mb，那么mapreduce会把3mb文件分为一个输入分片（input split），65mb则是两个输入分片（input split）而127mb也是两个输入分片（input split）
+即我们如果在map计算前做输入分片调整，例如合并小文件，那么就会有5个map任务将执行，而且每个map执行的数据大小不均，这个也是mapreduce优化计算的一个关键点。
+</code></pre><p><strong>map阶段：</strong><br>程序员编写好的map函数了，因此map函数效率相对好控制，而且一般map操作都是本地化操作也就是在数据存储节点上进行；</p>
+<p><strong>combiner阶段：</strong><br>combiner阶段是程序员可以选择的，combiner其实也是一种reduce操作，因此我们看见WordCount类里是用reduce进行加载的。</p>
+<p>Combiner是一个本地化的reduce操作，它是map运算的后续操作，主要是在map计算出中间文件前做一个简单的合并重复key值的操作，例如我们对文件里的单词频率做统计，map计算时候如果碰到一个hadoop的单词就会记录为1，但是这篇文章里hadoop可能会出现n多次，那么map输出文件冗余就会很多，因此在reduce计算前对相同的key做一个合并操作，那么文件会变小，这样就提高了宽带的传输效率，毕竟hadoop计算力宽带资源往往是计算的瓶颈也是最为宝贵的资源，但是combiner操作是有风险的，使用它的原则是combiner的输入不会影响到reduce计算的最终输入，<br>例如：如果计算只是求总数，最大值，最小值可以使用combiner，但是做平均值计算使用combiner的话，最终的reduce计算结果就会出错。</p>
+<p><strong>shuffle阶段：</strong><br>将map的输出作为reduce的输入的过程就是shuffle了</p>
+<p><strong>reduce阶段：</strong><br>和map函数一样也是程序员编写的，最终结果是存储在hdfs上的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介mr架构，4个对象&quot;&gt;&lt;a href=&quot;#简介mr架构，4个对象&quot; class=&quot;headerlink&quot; title=&quot;简介mr架构，4个对象&quot;&gt;&lt;/a&gt;简介mr架构，4个对象&lt;/h2&gt;&lt;p&gt;MapReduce的思想是“分而治之”。&lt;br&gt;1）Mapper负责
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://yoursite.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="大数据" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>Hadoop之hdfs</title>
