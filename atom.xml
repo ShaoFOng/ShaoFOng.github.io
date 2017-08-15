@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-14T16:22:14.900Z</updated>
+  <updated>2017-08-15T16:26:33.672Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>对MapReduce的认识2</title>
+    <link href="http://yoursite.com/2017/08/16/%E5%AF%B9MapReduce%E7%9A%84%E8%AE%A4%E8%AF%862/"/>
+    <id>http://yoursite.com/2017/08/16/对MapReduce的认识2/</id>
+    <published>2017-08-15T16:26:06.000Z</published>
+    <updated>2017-08-15T16:26:33.672Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="了解input-split"><a href="#了解input-split" class="headerlink" title="了解input split"></a>了解input split</h2><p><strong>输入分片（input split）：</strong><br>在进行map计算之前，mapreduce会根据输入文件计算输入分片（input split），每个输入分片（input split）针对一个map任务<br>输入分片（input split）存储的并非数据本身，而是一个分片长度和一个记录数据的位置的数组，输入分片（input split）往往和hdfs的block（块）关系很密切<br>假如我们设定hdfs的块的大小是64mb，如果我们输入有三个文件，大小分别是3mb、65mb和127mb，那么mapreduce会把3mb文件分为一个输入分片（input split），65mb则是两个输入分片（input split）而127mb也是两个输入分片（input split）<br>    即我们如果在map计算前做输入分片调整，例如合并小文件，那么就会有5个map任务将执行，而且每个map执行的数据大小不均，这个也是mapreduce优化计算的一个关键点。</p>
+<h2 id="处理阶段map-gt-partitioner-combiner-shuffle-gt-reduce"><a href="#处理阶段map-gt-partitioner-combiner-shuffle-gt-reduce" class="headerlink" title="处理阶段map-&gt; [partitioner,combiner,shuffle]-&gt;reduce"></a>处理阶段map-&gt; [partitioner,combiner,shuffle]-&gt;reduce</h2><p><strong>1、conbiner：</strong> MapReduce的一种优化手段<br>每一个map都可能会产生大量的本地输出，Combiner的作用就是对map端的输出先做一次合并，以减少在map和reduce节点之间的数据传输量，以提高网络IO性能<br><strong>Combiner的作用：</strong><br>（1）Combiner实现本地key的聚合，对map输出的key排序value进行迭代<br>       如下所示：<br>　　     map: (K1, V1) → list(K2, V2) 　　combine: (K2, list(V2)) → list(K2, V2) 　　reduce: (K2, list(V2)) → list(K3, V3)</p>
+<p>（2）Combiner还有本地reduce功能（其本质上就是一个reduce）<br>         例如wordcount的例子和找出value的最大值的程序<br>          combiner和reduce完全一致，如下所示：<br>　　          map: (K1, V1) → list(K2, V2) 　　     combine: (K2, list(V2)) → list(K3, V3) 　　     reduce: (K3, list(V3)) → list(K4, V4)<br>使用combiner之后，先完成的map会在本地聚合，提升速度。对于hadoop自带的wordcount的例子，value就是一个叠加的数字，所以map一结束就可以进行reduce的value叠加，而不必要等到所有的map结束再去进行reduce的value叠加。<br><img src="/images/combiner.png" alt="此处输入图片的描述"></p>
+<p><strong>2、partitioner：</strong><br><img src="/images/partitioner.png" alt="此处输入图片的描述"><br>哪个key到哪个Reducer的分配过程，是由Partitioner规定的。</p>
+<p>分区Partitioner主要作用在于以下两点<br> 1、根据业务需要，产生多个输出文件<br> 2、多个reduce任务并发运行，提高整体job的运行效率</p>
+<p><strong>3、shuffle:</strong><br><img src="/images/shuffle.png" alt="此处输入图片的描述"><br><strong>Shuffle是什么</strong><br>针对多个map任务的输出按照不同的分区（Partition）通过网络复制到不同的reduce任务节点上，这个过程就称作为Shuffle。<br><img src="/images/shuffle过程.png" alt="此处输入图片的描述"></p>
+<p><img src="/images/map端.png" alt="此处输入图片的描述"><br>1.在map端首先是InputSplit，在InputSplit中含有DataNode中的数据，每一个InputSplit都会分配一个Mapper任务，Mapper任务结束后产生<k2,v2>的输出，这些输出先存放在缓存中，每个map有一个环形内存缓冲区，用于存储任务的输出。默认大小100MB（io.sort.mb属性），一旦达到阀值0.8(io.sort.spil l.percent)，一个后台线程就把内容写到(spill)Linux本地磁盘中的指定目录（mapred.local.dir）下的新建的一个溢出写文件。<br>2.写磁盘前，要进行partition、sort和combine等操作。通过分区，将不同类型的数据分开处理，之后对不同分区的数据进行排序，如果有Combiner，还要对排序后的数据进行combine。等最后记录写完，将全部溢出文件合并为一个分区且排序的文件<br>3.最后将磁盘中的数据送到Reduce中，图中Map输出有三个分区，有一个分区数据被送到图示的Reduce任务中，剩下的两个分区被送到其他Reducer任务中。而图示的Reducer任务的其他的三个输入则来自其他节点的Map输出。<br><img src="/images/reduce端.png" alt="此处输入图片的描述"></k2,v2></p>
+<ol>
+<li>Copy阶段：Reducer通过Http方式得到输出文件的分区。<br>　　reduce端可能从n个map的结果中获取数据，而这些map的执行速度不尽相同，当其中一个map运行结束时，reduce就会从JobTracker中获取该信息。map运行结束后TaskTracker会得到消息，进而将消息汇报给JobTracker，reduce定时从JobTracker获取该信息，reduce端默认有5个数据复制线程从map端复制数据<br>2.Merge阶段：如果形成多个磁盘文件会进行合并<br>　　从map端复制来的数据首先写到reduce端的缓存中，同样缓存占用到达一定阈值后会将数据写到磁盘中，同样会进行partition、combine、排序等过程。如果形成了多个磁盘文件还会进行合并，最后一次合并的结果作为reduce的输入而不是写入到磁盘中<br>3.Reducer的参数：最后将合并后的结果作为输入传入Reduce任务中</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;了解input-split&quot;&gt;&lt;a href=&quot;#了解input-split&quot; class=&quot;headerlink&quot; title=&quot;了解input split&quot;&gt;&lt;/a&gt;了解input split&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;输入分片（input split）：
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://yoursite.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="大数据" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>对MapReduce的认识</title>
