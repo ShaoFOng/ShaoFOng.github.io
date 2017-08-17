@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-15T16:26:33.672Z</updated>
+  <updated>2017-08-17T16:51:43.738Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hive架构</title>
+    <link href="http://yoursite.com/2017/08/18/Hive%E6%9E%B6%E6%9E%84/"/>
+    <id>http://yoursite.com/2017/08/18/Hive架构/</id>
+    <published>2017-08-17T16:43:39.000Z</published>
+    <updated>2017-08-17T16:51:43.738Z</updated>
+    
+    <content type="html"><![CDATA[<p>　　Hive是一个基于Hadoop的数据仓库，最初由Facebook提供，使用HQL作为查询接口、HDFS作为存储底层、mapReduce作为执行层，设计目的是让SQL技能良好，但Java技能较弱的分析师可以查询海量数据，2008年facebook把Hive项目贡献给Apache。Hive提供了比较完整的SQL功能（本质是将SQL转换为MapReduce），自身最大的缺点就是执行速度慢。Hive有自身的元数据结构描述，可以使用MySql\ProstgreSql\oracle 等关系型数据库来进行存储，但请注意Hive中的所有数据都存储在HDFS中。<br><img src="/images/Hive架构.png" alt="此处输入图片的描述"></p>
+<p> Hive的体系结构可以分为以下几部分：<br>    （1）用户接口主要有三个：CLI，Client 和 WUI。其中最常用的是CLI，Cli启动的时候，会同时启动一个Hive副本。Client是Hive的客户端，用户连接至Hive Server。在启动 Client模式的时候，需要指出Hive Server所在节点，并且在该节点启动Hive Server。 WUI是通过浏览器访问Hive。<br>    （2）Hive将元数据存储在数据库中，如MySQL、derby。Hive中的元数据包括表的名字，表的列和分区及其属性，表的属性（是否为外部表等），表的数据所在目录等。<br>    （3）解释器、编译器、优化器完成HQL查询语句从词法分析、语法分析、编译、优化以及查询计划的生成。生成的查询计划存储在HDFS中，并在随后有MapReduce调用执行。<br>    （4）Hive的数据存储在HDFS中，大部分的查询、计算由MapReduce完成（包含<em>的查询，比如select </em> from tbl不会生成MapRedcue任务）。<br>    Hive将元数据存储在RDBMS中，有三种模式可以连接到数据库：<br>    <strong>（1） 单用户模式</strong><br>    此模式连接到一个In-memory 的数据库Derby，一般用于Unit Test。<br>    <img src="/images/hive单用户模式.jpg" alt="此处输入图片的描述"></p>
+<p><strong>（2）多用户模式</strong><br>通过网络连接到一个数据库中，是最经常使用到的模式。<br><img src="/images/hive多用户模式.jpg" alt="此处输入图片的描述"></p>
+<p><strong>（3） 远程服务器模式</strong><br>用于非Java客户端访问元数据库，在服务器端启动MetaStoreServer，客户端利用Thrift协议通过MetaStoreServer访问元数据库。<br><img src="/images/hive远程服务器模式.jpg" alt="此处输入图片的描述"></p>
+<p>对于数据存储，Hive没有专门的数据存储格式，也没有为数据建立索引，用户可以非常自由的组织Hive中的表，只需要在创建表的时候告诉Hive数据中的列分隔符和行分隔符，Hive就可以解析数据。Hive中所有的数据都存储在HDFS中，存储结构主要包括数据库、文件、表和视图。Hive中包含以下数据模型：Table内部表，External Table外部表，Partition分区，Bucket桶。Hive默认可以直接加载文本文件，还支持sequence file 、RCFile。<br>    Hive的数据模型介绍如下：<br>    <strong>（1）Hive数据库</strong><br>    类似传统数据库的DataBase，在第三方数据库里实际是一张表。简单示例命令行 hive &gt; create database test_database;<br>    <strong>（2）内部表</strong><br>    Hive的内部表与数据库中的Table在概念上是类似。每一个Table在Hive中都有一个相应的目录存储数据。例如一个表pvs，它在HDFS中的路径为/wh/pvs，其中wh是在hive-site.xml中由${hive.metastore.warehouse.dir} 指定的数据仓库的目录，所有的Table数据（不包括External Table）都保存在这个目录中。删除表时，元数据与数据都会被删除。<br>    内部表简单示例：<br>    创建数据文件：test_inner_table.txt<br>    创建表：create table test_inner_table (key string)<br>    加载数据：LOAD DATA LOCAL INPATH ‘filepath’ INTO TABLE test_inner_table<br>    查看数据：select <em> from test_inner_table;  select count(</em>) from test_inner_table<br>    删除表：drop table test_inner_table<br>    <strong>（3）外部表</strong><br>    外部表指向已经在HDFS中存在的数据，可以创建Partition。它和内部表在元数据的组织上是相同的，而实际数据的存储则有较大的差异。内部表的创建过程和数据加载过程这两个过程可以分别独立完成，也可以在同一个语句中完成，在加载数据的过程中，实际数据会被移动到数据仓库目录中；之后对数据对访问将会直接在数据仓库目录中完成。删除表时，表中的数据和元数据将会被同时删除。而外部表只有一个过程，加载数据和创建表同时完成（CREATE EXTERNAL TABLE ……LOCATION），实际数据是存储在LOCATION后面指定的 HDFS 路径中，并不会移动到数据仓库目录中。当删除一个External Table时，仅删除该链接。<br>    外部表简单示例：<br>    创建数据文件：test_external_table.txt<br>    创建表：create external table test_external_table (key string)<br>    加载数据：LOAD DATA INPATH ‘filepath’ INTO TABLE test_inner_table<br>    查看数据：select <em> from test_external_table;  •select count(</em>) from test_external_table<br>    删除表：drop table test_external_table<br>    <strong>（4）分区</strong><br>    Partition对应于数据库中的Partition列的密集索引，但是Hive中Partition的组织方式和数据库中的很不相同。在Hive中，表中的一个Partition对应于表下的一个目录，所有的Partition的数据都存储在对应的目录中。例如pvs表中包含ds和city两个Partition，则对应于ds = 20090801, ctry = US 的HDFS子目录为/wh/pvs/ds=20090801/ctry=US；对应于 ds = 20090801, ctry = CA 的HDFS子目录为/wh/pvs/ds=20090801/ctry=CA。<br>    分区表简单示例：<br>    创建数据文件：test_partition_table.txt<br>    创建表：create table test_partition_table (key string) partitioned by (dt string)<br>    加载数据：LOAD DATA INPATH ‘filepath’ INTO TABLE test_partition_table partition (dt=‘2006’)<br>    查看数据：select <em> from test_partition_table;  select count(</em>) from test_partition_table<br>    删除表：drop table test_partition_table<br>    <strong>（5）桶</strong><br>    Buckets是将表的列通过Hash算法进一步分解成不同的文件存储。它对指定列计算hash，根据hash值切分数据，目的是为了并行，每一个Bucket对应一个文件。例如将user列分散至32个bucket，首先对user列的值计算hash，对应hash值为0的HDFS目录为/wh/pvs/ds=20090801/ctry=US/part-00000；hash值为20的HDFS目录为/wh/pvs/ds=20090801/ctry=US/part-00020。如果想应用很多的Map任务这样是不错的选择。<br>    桶的简单示例：<br>    创建数据文件：test_bucket_table.txt<br>    创建表：create table test_bucket_table (key string) clustered by (key) into 20 buckets<br>    加载数据：LOAD DATA INPATH ‘filepath’ INTO TABLE test_bucket_table<br>    查看数据：select <em> from test_bucket_table;  set hive.enforce.bucketing = true;<br>    <strong>（6）Hive的视图</strong><br>    视图与传统数据库的视图类似。视图是只读的，它基于的基本表，如果改变，数据增加不会影响视图的呈现；如果删除，会出现问题。•如果不指定视图的列，会根据select语句后的生成。<br>    示例：create view test_view as select </em> from test</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　Hive是一个基于Hadoop的数据仓库，最初由Facebook提供，使用HQL作为查询接口、HDFS作为存储底层、mapReduce作为执行层，设计目的是让SQL技能良好，但Java技能较弱的分析师可以查询海量数据，2008年facebook把Hive项目贡献给Apa
+    
+    </summary>
+    
+      <category term="大数据" scheme="http://yoursite.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    
+      <category term="大数据" scheme="http://yoursite.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>对MapReduce的认识2</title>
