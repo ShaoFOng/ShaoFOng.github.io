@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-17T16:55:26.456Z</updated>
+  <updated>2017-08-17T17:02:48.573Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/18/Hive%E6%9E%B6%E6%9E%84/"/>
     <id>http://yoursite.com/2017/08/18/Hive架构/</id>
     <published>2017-08-17T16:43:39.000Z</published>
-    <updated>2017-08-17T16:55:26.456Z</updated>
+    <updated>2017-08-17T17:02:48.573Z</updated>
     
     <content type="html"><![CDATA[<p>　　Hive是一个基于Hadoop的数据仓库，最初由Facebook提供，使用HQL作为查询接口、HDFS作为存储底层、mapReduce作为执行层，设计目的是让SQL技能良好，但Java技能较弱的分析师可以查询海量数据，2008年facebook把Hive项目贡献给Apache。Hive提供了比较完整的SQL功能（本质是将SQL转换为MapReduce），自身最大的缺点就是执行速度慢。Hive有自身的元数据结构描述，可以使用MySql\ProstgreSql\oracle 等关系型数据库来进行存储，但请注意Hive中的所有数据都存储在HDFS中。<br><img src="/images/hive架构.png" alt="此处输入图片的描述"></p>
 <p> Hive的体系结构可以分为以下几部分：<br>    （1）用户接口主要有三个：CLI，Client 和 WUI。其中最常用的是CLI，Cli启动的时候，会同时启动一个Hive副本。Client是Hive的客户端，用户连接至Hive Server。在启动 Client模式的时候，需要指出Hive Server所在节点，并且在该节点启动Hive Server。 WUI是通过浏览器访问Hive。<br>    （2）Hive将元数据存储在数据库中，如MySQL、derby。Hive中的元数据包括表的名字，表的列和分区及其属性，表的属性（是否为外部表等），表的数据所在目录等。<br>    （3）解释器、编译器、优化器完成HQL查询语句从词法分析、语法分析、编译、优化以及查询计划的生成。生成的查询计划存储在HDFS中，并在随后有MapReduce调用执行。<br>    （4）Hive的数据存储在HDFS中，大部分的查询、计算由MapReduce完成（包含<em>的查询，比如select </em> from tbl不会生成MapRedcue任务）。<br>    Hive将元数据存储在RDBMS中，有三种模式可以连接到数据库：<br>    <strong>（1） 单用户模式</strong><br>    此模式连接到一个In-memory 的数据库Derby，一般用于Unit Test。<br>    <img src="/images/hive单用户模式.jpg" alt="此处输入图片的描述"></p>
