@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-17T17:16:43.633Z</updated>
+  <updated>2017-08-21T03:11:22.650Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈MVVM</title>
+    <link href="http://yoursite.com/2017/08/21/%E6%B5%85%E8%B0%88MVVM/"/>
+    <id>http://yoursite.com/2017/08/21/浅谈MVVM/</id>
+    <published>2017-08-21T01:35:36.000Z</published>
+    <updated>2017-08-21T03:11:22.650Z</updated>
+    
+    <content type="html"><![CDATA[<p>　　这几天在做一个Vue.js的项目，由于Vue.js是基于MVVM框架的，所以来写个博客总结下MVVM框架。<br>如下图：<br>　　<img src="/images/MVVM框架.png" alt="此处输入图片的描述"><br>MVVM框架主要包括三个部分：Model、View和ViewModel<br>Model指的是数据部分，对应到前端就是Javascript对象<br>View指的是视图部分，对应到前端就是DOM<br>ViewModel就是连接数据和视图的中间件</p>
+<p>在MVVM的架构下，视图和数据不能直接通讯，它们通过ViewModel进行通讯，ViewModel实现一个observer观察者,当数据发生变化，ViewModel会观察到数据的变化，然后通知到对应的视图做自动更新。当用户操作视图，ViewModel也会监听到视图的变化，然后通知数据做改动，这实际上就是实现了数据的双向绑定。</p>
+<h2 id="MVVM-的优点："><a href="#MVVM-的优点：" class="headerlink" title="MVVM 的优点："></a>MVVM 的优点：</h2><p>1、主要目的是分离视图（View）和模型（Model）<br>2、降低代码耦合，提高视图或者逻辑的重用性。<br>3、提高了模块的可测试性</p>
+<h2 id="任务分工："><a href="#任务分工：" class="headerlink" title="任务分工："></a>任务分工：</h2><p>1、模型（Model）<br>模型和业务数据绑定，方便数据的使用和传递</p>
+<p>2、视图（View）<br>视图是应用程序中用户界面相关的部分，是用户看到并与之交互的界面。</p>
+<p>3、ViewModel<br>首先它的创建需要将Model中的数据绑定在他身上。将原来MVC中的业务逻辑剥离出来 写在ViewModel中，简化view 和 controller</p>
+<p>参考博客：<a href="http://www.jianshu.com/p/bc297d9e6aa5" target="_blank" rel="external">http://www.jianshu.com/p/bc297d9e6aa5</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　这几天在做一个Vue.js的项目，由于Vue.js是基于MVVM框架的，所以来写个博客总结下MVVM框架。&lt;br&gt;如下图：&lt;br&gt;　　&lt;img src=&quot;/images/MVVM框架.png&quot; alt=&quot;此处输入图片的描述&quot;&gt;&lt;br&gt;MVVM框架主要包括三个部分：Mod
+    
+    </summary>
+    
+      <category term="前端 技术" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF-%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="前端 技术" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF-%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Hive架构</title>
